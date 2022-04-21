@@ -15,7 +15,7 @@ void gameEngine::startGame()
 	std::cout << "Hello and welcome to my wordle prototype\n";
 
 	while ( (userGuess != this->_wordToGuess) && (tries != 5) ){
-		std::cout << "Enter your guess:\n";
+		std::cout << "\nEnter your guess:\n";
 		std::cin >> userGuess;
 		std::cout << "\n";
 		checkIfExist(&userGuess);
@@ -24,7 +24,7 @@ void gameEngine::startGame()
 		tries++;
 	}
 	
-	(tries == 5) ? std::cout << "\n0You run out of tries :(\n" : std::cout << "Good Job!\n";
+	(tries == 5) ? std::cout << "\nYou run out of tries :(\n" : std::cout << "Good Job!\n";
 }
 
 void gameEngine::checkIfExist(std::string* word)
@@ -61,21 +61,19 @@ void gameEngine::printBoard(uint32_t rowNumber)
 	{
 		for (int j = 0; j < COL; j++)
 		{
-			if (this->_board[i][j].length() >= 1) {
-				if ((this->_board[i][j])[1] == 'g') {
-					std::cout << textColor(2, this->_board[i][j][0]);
-					textColor(7, ' ');
-				}
-				else if ((this->_board[i][j])[1] == 'y') {
-					std::cout << textColor(6, this->_board[i][j][0]);
-					textColor(7, ' ');
-				}
-				else {
-					std::cout << this->_board[i][j];
-				}
+			if ((this->_board[i][j])[1] == 'g') {
+				std::cout << textColor(2, this->_board[i][j][0]);
+				textColor(7, ' ');
+			}
+			else if ((this->_board[i][j])[1] == 'y') {
+				std::cout << textColor(6, this->_board[i][j][0]);
+				textColor(7, ' ');
+			}
+			else {
+				std::cout << this->_board[i][j];
 			}
 
 		}
-		std::cout << "\n\n";
+		std::cout << "\n";
 	}
 }
