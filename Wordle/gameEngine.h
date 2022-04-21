@@ -20,7 +20,7 @@ public:
 	void checkIfExist(std::string* word);
 
 	void fillBoard(uint32_t columNumber, const std::string guessWord);
-	void printBoard();
+	void printBoard(uint32_t columNumber);
 
 private:
 	std::string _wordToGuess;

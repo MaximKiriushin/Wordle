@@ -10,21 +10,21 @@ gameEngine::~gameEngine() {
 
 void gameEngine::startGame()
 {	
-	int column = 0;
+	uint32_t tries = 0;
 	std::string userGuess;
 	std::cout << "Hello and welcome to my wordle prototype\n";
 
-	while ( (userGuess != this->_wordToGuess) && (column != 5) ){
+	while ( (userGuess != this->_wordToGuess) && (tries != 5) ){
 		std::cout << "Enter your guess:\n";
 		std::cin >> userGuess;
 		std::cout << "\n";
 		checkIfExist(&userGuess);
-		fillBoard(column, userGuess);
-		printBoard();
-		column++;
+		fillBoard(tries, userGuess);
+		printBoard(tries +1);
+		tries++;
 	}
 	
-	(column == 5) ? std::cout << "\n0You run out of tries :(\n" : std::cout << "Good Job!\n";
+	(tries == 5) ? std::cout << "\n0You run out of tries :(\n" : std::cout << "Good Job!\n";
 }
 
 void gameEngine::checkIfExist(std::string* word)
@@ -55,9 +55,9 @@ void gameEngine::fillBoard(uint32_t col, const std::string guessWord)
 
 }
 
-void gameEngine::printBoard()
+void gameEngine::printBoard(uint32_t rowNumber)
 {
-	for (int i = 0; i < ROW; i++)
+	for (int i = 0; i < rowNumber; i++)
 	{
 		for (int j = 0; j < COL; j++)
 		{
@@ -76,6 +76,6 @@ void gameEngine::printBoard()
 			}
 
 		}
-		std::cout << "\n";
+		std::cout << "\n\n";
 	}
 }
