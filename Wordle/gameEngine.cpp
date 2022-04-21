@@ -12,7 +12,6 @@ void gameEngine::startGame()
 {	
 	int column = 0;
 	std::string userGuess;
-	std::cout << this->_wordToGuess << std::endl;
 	std::cout << "Hello and welcome to my wordle prototype\n";
 
 	while ( (userGuess != this->_wordToGuess) && (column != 5) ){
